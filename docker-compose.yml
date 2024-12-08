@@ -1,8 +1,8 @@
 version: "3"
 services:
     yasdi2mqtt:
-        # You may also check out :stable release or `build: "."`, if :latest fails
-        image: "pkwagner/yasdi2mqtt:latest"
+        # You may also check out :latest, :stable or `build: "."`, if :latest fails
+        image: "pkwagner/yasdi2mqtt:alpine"
         volumes:
             - "./devices:/etc/yasdi2mqtt/devices"
             - "./yasdi.ini:/etc/yasdi2mqtt/yasdi.ini:ro"
@@ -10,7 +10,6 @@ services:
             - "/dev/ttyUSB0:/dev/ttyUSB0"
         environment:
             YASDI_CONFIG: "/etc/yasdi2mqtt/yasdi.ini"
-            YASDI_DRIVER_ID: 0
             YASDI_MAX_DEVICE_COUNT: 1
             YASDI_UPDATE_INTERVAL: 30
             MQTT_TOPIC_PREFIX: "solar/inverter"
